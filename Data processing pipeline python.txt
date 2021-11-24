@@ -1,0 +1,490 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "button": false,
+    "new_sheet": false,
+    "run_control": {
+     "read_only": false
+    }
+   },
+   "source": [
+    "<a href=\"https://www.nottingham.ac.uk/\"><img src=\"https://www.nottingham.ac.uk/Brand/LegacyAssets/images-multimedia/Supporting/Logo/Video/third-party-logos.JPG\" width=\"400\" align=\"center\"></a>\n",
+    "\n",
+    "<h1><center>Activity: Data Processing Pipeline</center></h1>\n",
+    "\n",
+    "<h2>About this Lab</h2><br>\n",
+    "This Python script is designed for your activity in weekly tutorial for performing data processing pipeline in Python programming language using Jupyter Notebook from IBM Skills Network Labs. This is the similar activity that we demonstrated using \"FuelConsumption.csv\" dataset.<br>\n",
+    "\n",
+    "***Important note:*** Please note that you are not expected to know how to program in Python. You can copy and paste the code from the previous script. The main objective of this tutorial is to give you some practical experience about performing data processing pipeline using Python programming Language. We will cover each of the steps in details with practical activity later in this module."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Estimated time needed: 45 minutes\n",
+    "\n",
+    "The data we’re going to work with is a very small \"breasttissue.csv\" dataset. Head on over to Moodle page to grab a copy of the dataset so that you can code along."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Objectives\n",
+    "\n",
+    "In this lab, you will demonstrate:\n",
+    "- Extract and Exploring data\n",
+    "- Data Visualisation using graphs\n",
+    "- Identify and dealing with Missing value and Outliers\n",
+    "- Draw some conclusion\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "button": false,
+    "new_sheet": false,
+    "run_control": {
+     "read_only": false
+    }
+   },
+   "source": [
+    "### Importing Needed packages\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "button": false,
+    "new_sheet": false,
+    "run_control": {
+     "read_only": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "import matplotlib.pyplot as plt\n",
+    "import pandas as pd\n",
+    "import pylab as pl\n",
+    "import numpy as np\n",
+    "%matplotlib inline"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "button": false,
+    "new_sheet": false,
+    "run_control": {
+     "read_only": false
+    }
+   },
+   "source": [
+    "<h2 id=\"understanding_data\">Understanding the Data</h2>\n",
+    "\n",
+    "### `breasttissue.csv`:\n",
+    "\n",
+    "Download **`breasttissue.csv`** dataset from Moodle and upload it to the same folder as Python script folder. This is a dataset with electrical impedance measurements in samples of freshly excised tissue from the Breast. It consists of 106 instances. 10 attributes: 9 features + 1 class attribute. \n",
+    "\n",
+    "Attribute Description\n",
+    "- I0       Impedivity (ohm) at zero frequency\n",
+    "- PA500    phase angle at 500 KHz\n",
+    "- HFS      high-frequency slop e of phase angle\n",
+    "- DA       impedance distance between spectral ends\n",
+    "- AREA     area under spectrum\n",
+    "- A/DA     area normalized by DA\n",
+    "- MAX IP   maximum of the spectrum\n",
+    "- DR       distance between I0 and real part of the maximum frequency point\n",
+    "- P        length of the spectral curve"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "button": false,
+    "new_sheet": false,
+    "run_control": {
+     "read_only": false
+    }
+   },
+   "source": [
+    "<h2 id=\"reading_data\">Reading the data</h2>\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#!wget -O FuelConsumption.csv https://mydata-1-labs-prod-misc-tools-us-east-1.labs.cognitiveclass.ai/user/nhussain920/?storage=cephfs/FuelConsumption.csv"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "button": false,
+    "new_sheet": false,
+    "run_control": {
+     "read_only": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Data read into dataframe!\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Loading Dataset using Pandas from URL\n",
+    "df = pd.read_csv(\"breasttissue.csv\") # df is the varaible that that read and store data into dataframe\n",
+    "print(\"Data read into dataframe!\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "button": false,
+    "new_sheet": false,
+    "run_control": {
+     "read_only": false
+    }
+   },
+   "source": [
+    "<h2 id=\"data_exploration\">Activity 1:Explore the data</h2>\n",
+    "\n",
+    "First, take a look at the first 30 rows of the data using df.head() function.\n",
+    "Second, get the dimensions of the data frame using df.shape function.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# 1.1 Take a look at the first 30 rows of the data\n",
+    "# Write your code here\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# 1.2 Get the dimensions of the dataframe.\n",
+    "# Write you code here\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<font color='blue'> Double click here and Describe the dimension of the dataset in this cell.</font>\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Activity 2: Get the information of the data structure and find Missing Values and explain\n",
+    "\n",
+    "Missing values are usually represented in the form of **Nan** or **null** or **None** in the dataset.\n",
+    "\n",
+    "**df.info()** function can be used to give information about the dataset. The second way of finding whether we have null values in the data is by using the **isnull()** function."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# 2.1 Get the information of the data structure and observe missing values. \n",
+    "# Write your code here.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<font color='blue'>Double click here and Explain the missing values of this dataset in this cell.</font>\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Activity 3 : Impute Missing Values with a single constant value.\n",
+    "There are many options to pick from when replacing a missing value: Use **fillna()** to replace missing values.\n",
+    "\n",
+    "- A single pre-decided constant value, such as 0.\n",
+    "- Taking value from another randomly selected sample.\n",
+    "- Mean, median, or mode for the column.\n",
+    "- Interpolate value using a predictive model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0       524.794072\n",
+      "1       330.000000\n",
+      "2       551.879287\n",
+      "3       380.000000\n",
+      "4       362.831266\n",
+      "          ...     \n",
+      "101    2000.000000\n",
+      "102    2600.000000\n",
+      "103    1600.000000\n",
+      "104    2300.000000\n",
+      "105    2600.000000\n",
+      "Name: I0, Length: 106, dtype: float64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# 3.1 Replace all missing values with 0 from I0 Column.\n",
+    "# I0 column is done for you.\n",
+    "df['I0'].fillna(0, inplace=True)# To check changes call\n",
+    "print(df['I0'].head(106))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Replacing Missing values from other columns.\n",
+    "# Write your code here.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Activity 4: Data Visualisation."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {
+    "button": false,
+    "new_sheet": false,
+    "run_control": {
+     "read_only": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# 4.1 Plot each of the features: 'Class', 'HFS', 'DA', 'Area', and 'Max IP'.\n",
+    "# Write you code here.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<font color='blue'>Double click here and Describe what does each of these above figures represent.</font>\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Correlation Example: Lets plot I0 vs DR, to see how they are correlated."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {
+    "button": false,
+    "new_sheet": false,
+    "run_control": {
+     "read_only": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 432x288 with 1 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "# 4.1 Plot I0 vs DR to see how correlated or linear is their relation\n",
+    "# Sample code\n",
+    "plt.scatter(df.I0, df.DR,  color='blue')\n",
+    "plt.xlabel(\"I0\")\n",
+    "plt.ylabel(\"DR\")\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# 4.2 Plot DA vs P to see how correlated or linear is their relation\n",
+    "# Write your code here\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    " "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Activity 5 Outlier Identification\n",
+    "\n",
+    "An outlier is a data point that differs significantly from the majority of the data taken from a sample or population. There are many possible causes of outliers, but here are a few to start you off:\n",
+    "\n",
+    "- Natural variation in data\n",
+    "- Change in the behavior of the observed system\n",
+    "- Errors in data collection\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If our dataset is small, we can detect the outlier by just looking at the dataset. \n",
+    "But what if we have a huge dataset, how do we identify the outliers then?\n",
+    "We need to use visualization and mathematical techniques.\n",
+    "\n",
+    "Below are some of the techniques of detecting outliers:\n",
+    "\n",
+    "-    Scatter plot\n",
+    "-    Boxplots\n",
+    "-    Z-score\n",
+    "-    Inter Quantile Range(IQR)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "5.1 Draw a Scatter Plot diagram, I0 vs PA500 to detect outliers."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Scatter Plot diagram, I0 vs PA500\n",
+    "# Write your code here\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<font color='blue'>Double click here and Describe your findings.</font>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "button": false,
+    "new_sheet": false,
+    "run_control": {
+     "read_only": false
+    }
+   },
+   "source": [
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "button": false,
+    "new_sheet": false,
+    "run_control": {
+     "read_only": false
+    }
+   },
+   "source": [
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Thank you for completing this tutorial!\n",
+    "<h4>Author: Dr Nazmul Hussain</h4>\n",
+    "<h4>Contributor: Dr Tominiyi Olupitan</h4>\n",
+    "<h3 align=\"center\"> © University of Nottingham. All rights reserved. <h3/>\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python",
+   "language": "python",
+   "name": "conda-env-python-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.13"
+  },
+  "widgets": {
+   "state": {},
+   "version": "1.1.2"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
